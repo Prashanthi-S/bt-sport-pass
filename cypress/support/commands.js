@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import 'cypress-iframe';
+
+Cypress.Commands.add('acceptBTCookies', () => {
+    cy.visit("/")
+    cy.frameLoaded('iframe[title="TrustArc Cookie Consent Manager"]')
+    cy.iframe('iframe[title="TrustArc Cookie Consent Manager"]')
+    .should('be.visible')
+    .find('.pdynamicbutton')
+    .find('.call').click({force: true})
+})
