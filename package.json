@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/Prashanthi-S/bt-sport-pass#readme",
   "devDependencies": {
-    "cypress": "^10.2.0"
+    "cypress": "^10.2.0",
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }
