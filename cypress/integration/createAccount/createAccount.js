@@ -24,5 +24,21 @@ Then("all three password errors should be displayed", () => {
         .should('have.length', 3)
         .each($elm => {
             cy.wrap($elm).should('have.attr', 'data-invalid', 'true')
+            cy.wrap($elm).find('span').eq(0).find('svg > path').should('have.attr', 'fill', '#E60014');
         })
+})
+
+And('user enters valid inputs', () => {
+    const account = new AccountPage();
+    account.fillAccountForm('test@email.com', 'Treat@12');
+});
+
+Then('user should create account', () => {
+    cy.get('[data-testid="password-requirements"] ul li')
+        .should('have.length', 3)
+        .each($elm => {
+            cy.wrap($elm).should('have.attr', 'data-invalid', 'false')
+            cy.wrap($elm).find('span').eq(0).find('svg > path').should('have.attr', 'fill', '#008A00');
+        })
+    cy.get('[data-testid="account-form-submit"]').click()
 })
