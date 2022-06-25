@@ -26,6 +26,7 @@
 import "cypress-iframe";
 import { AccountPage } from "../support/PageObjects/AccountPage";
 import { UserDetailsPage } from "../support/PageObjects/UserDetailsPage";
+import { BillingAddrPage } from "../support/PageObjects/BillingAddrPage";
 
 Cypress.Commands.add("acceptBTCookies", () => {
   cy.visit("/");
@@ -51,5 +52,13 @@ Cypress.Commands.add("gotoBillingAddrPage", () => {
     "07438123321",
     { date: "11", month: "04", year: "1988" },
     "test"
+  );
+});
+
+Cypress.Commands.add("gotoBillingCardDetailsPage", () => {
+  const addrDetails = new BillingAddrPage();
+  addrDetails.fillBillingAddr(
+    "EC2A 2EW",
+    "Twelfth Floor, Broadgate Tower, 20 Primrose Street, London, EC2A 2EW"
   );
 });
