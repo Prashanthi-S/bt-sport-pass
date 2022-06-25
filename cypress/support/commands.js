@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-iframe';
+import { AccountPage } from "../support/PageObjects/AccountPage";
 
 Cypress.Commands.add('acceptBTCookies', () => {
     cy.visit("/")
@@ -33,3 +34,9 @@ Cypress.Commands.add('acceptBTCookies', () => {
     .find('.pdynamicbutton')
     .find('.call').click({force: true})
 })
+
+Cypress.Commands.add('gotoUserDetailsPage', () => {
+  const account = new AccountPage();
+  account.fillAccountForm("test@email.com", "Treat@12");
+  cy.get('[data-testid="account-form-submit"]').click();
+});
