@@ -2,5 +2,8 @@
 
 To run the cypress tests please run 
 
-`npm test`
+```
+npm install
+npm test
+```
 
