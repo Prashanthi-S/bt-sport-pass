@@ -5,3 +5,4 @@ Feature: User details
         Given User visit the user details page
         When User fills the invalid input details
         Then User should see validation errors
+        And User enters valid data and click submit
