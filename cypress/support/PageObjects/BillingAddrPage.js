@@ -6,10 +6,10 @@ export class BillingAddrPage {
       .clear()
       .type(postcode)
       .should("have.value", postcode);
-    billing.get('[type="submit"]').click();
+    billing.get('[type="submit"]').click({force:true});
     if (placeName) {
-      billing.get("#address").select(placeName);
+      billing.get('#address').select(placeName);
     }
-    billing.get('[type="submit"]').click();
+    billing.get('[type="submit"]').click({force:true});
   }
 }
